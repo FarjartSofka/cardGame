@@ -1,6 +1,6 @@
-package org.example.model.gateway;
+package org.example.model.game.gateway;
 
-import org.example.model.Game;
+import org.example.model.game.Game;
 import reactor.core.publisher.Mono;
 
 public interface GameRepository {

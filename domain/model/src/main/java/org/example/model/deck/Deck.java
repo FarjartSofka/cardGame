@@ -1,4 +1,8 @@
-package org.example.model;
+package org.example.model.deck;
+
+import org.example.model.game.Game;
+import org.example.model.player.Player;
+import org.example.model.card.Card;
 
 import java.util.Set;
 

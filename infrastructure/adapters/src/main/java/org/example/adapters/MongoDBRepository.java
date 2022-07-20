@@ -1,4 +1,7 @@
 package org.example.adapters;
 
-public interface MongoDBRepository {
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
+
+public interface MongoDBRepository<T, ID> extends ReactiveMongoRepository<T,ID>, ReactiveQueryByExampleExecutor<T> {
 }

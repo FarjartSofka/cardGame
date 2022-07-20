@@ -1,6 +1,6 @@
-package org.example.model.gateway;
+package org.example.model.card.gateway;
 
-import org.example.model.Card;
+import org.example.model.card.Card;
 import reactor.core.publisher.Mono;
 
 public interface CardRepository {

@@ -1,4 +1,6 @@
-package org.example.model;
+package org.example.model.game;
+
+import org.example.model.player.Player;
 
 import java.util.Set;
 
