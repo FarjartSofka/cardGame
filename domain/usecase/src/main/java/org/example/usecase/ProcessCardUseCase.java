@@ -17,4 +17,8 @@ public class ProcessCardUseCase {
 
     public Mono<Card> cardById(String id){ return cardRepository.findById(id); }
 
+    public Mono<Card> save(Card card){
+        return cardRepository.save(card);
+    }
+
 }

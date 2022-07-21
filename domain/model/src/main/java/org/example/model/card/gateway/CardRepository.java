@@ -10,5 +10,7 @@ public interface CardRepository {
 
     Flux<Card> findAll();
 
+    Mono<Card> save(Card card);
+
 }
 
