@@ -21,6 +21,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.reactivecommons</groupId>
+            <artifactId>object-mapper</artifactId>
+            <version>0.0.5</version>
+        </dependency>
     </dependencies>
 
 </project>

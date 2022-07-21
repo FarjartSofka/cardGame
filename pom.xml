@@ -15,6 +15,7 @@
         <module>infrastructure</module>
         <module>infrastructure/adapters</module>
         <module>infrastructure/entrypoints</module>
+        <module>domain</module>
     </modules>
 
     <properties>
