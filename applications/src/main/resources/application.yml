@@ -6,3 +6,4 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://admin:Reto3@cluster0.o9brs.mongodb.net/cardgame?retryWrites=true&w=majority
+      #uri: mongodb://localhost:27017/cardgame

@@ -19,9 +19,14 @@ public class CardController {
         this.processCardUseCase = processCardUseCase;
     }
 
+    @PostMapping("/create")
+    public Mono<Card> save(@RequestBody Card card){
+        return processCardUseCase.save(card);
+    }
+
     @GetMapping("/all")
     public Flux<Card> allCards(){ return processCardUseCase.allCards(); }
 
-    @GetMapping("card/{id}")
+    @GetMapping("/card/{id}")
     public Mono<Card> cardById(@PathVariable("id") String cardId){ return processCardUseCase.cardById(cardId); }
 }

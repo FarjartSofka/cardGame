@@ -1,7 +1,11 @@
-package org.example.model.card;
+package org.example.adapters.card;
 
-public class Card {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
+public class CardDocument {
+    @Id
     private String id;
 
     private String name;
@@ -16,10 +20,10 @@ public class Card {
 
     private String characteristic;
 
-    public Card() {
+    public CardDocument() {
     }
 
-    public Card(String id, String name, String url, Long exp, String power, String description, String characteristic) {
+    public CardDocument(String id, String name, String url, Long exp, String power, String description, String characteristic) {
         this.id = id;
         this.name = name;
         this.url = url;
@@ -98,4 +102,3 @@ public class Card {
                 '}';
     }
 }
-

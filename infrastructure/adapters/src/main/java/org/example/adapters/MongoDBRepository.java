@@ -1,7 +1,9 @@
 package org.example.adapters;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
+import org.springframework.data.repository.NoRepositoryBean;
 
-public interface MongoDBRepository<T, ID> extends ReactiveMongoRepository<T,ID>, ReactiveQueryByExampleExecutor<T> {
+
+@NoRepositoryBean
+public interface MongoDBRepository<T, K> extends ReactiveMongoRepository<T,K>{
 }
