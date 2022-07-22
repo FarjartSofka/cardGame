@@ -1,10 +1,10 @@
-package org.example.model.player.gateway;
+package org.example.model.user.gateway;
 
 import org.example.model.card.Card;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface PlayerRepository {
+public interface UserRepository {
 
     Mono<Card> findById(String id);
 
