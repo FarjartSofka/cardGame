@@ -1,5 +1,4 @@
-/.idea/
-**/*.iml
+.iml
+target
+.idea
 *.iml
-/target/
-**/target/
