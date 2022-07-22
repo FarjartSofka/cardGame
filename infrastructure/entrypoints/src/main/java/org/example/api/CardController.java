@@ -1,6 +1,6 @@
 package org.example.api;
 
-import org.example.model.card.Card;
+import org.example.model.CardContext.card.Card;
 import org.example.usecase.ProcessCardUseCase;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;

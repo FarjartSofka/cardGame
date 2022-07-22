@@ -1,7 +1,7 @@
 package org.example.usecase;
 
-import org.example.model.card.Card;
-import org.example.model.card.gateway.CardRepository;
+import org.example.model.CardContext.card.Card;
+import org.example.model.CardContext.card.gateway.CardRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

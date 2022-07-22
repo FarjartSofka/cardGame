@@ -1,8 +1,8 @@
 package org.example.adapters.card;
 
 import org.example.adapters.helper.OperationAdapter;
-import org.example.model.card.Card;
-import org.example.model.card.gateway.CardRepository;
+import org.example.model.CardContext.card.Card;
+import org.example.model.CardContext.card.gateway.CardRepository;
 import org.reactivecommons.utils.ObjectMapperI;
 import org.springframework.stereotype.Repository;
 
