@@ -1,4 +1,6 @@
 package org.example.model.game.values;
 
-public class GameId {
+import co.com.sofka.domain.generic.Identity;
+
+public class GameId extends Identity {
 }

@@ -1,55 +1,26 @@
 package org.example.model.player;
 
 
-public class Player {
+import co.com.sofka.domain.generic.Entity;
+import org.example.model.player.values.Deck;
+import org.example.model.player.values.Nickname;
+import org.example.model.player.values.PlayerId;
+import org.example.model.player.values.Score;
 
-    private String id;
-
-    private String name;
-
-    private String email;
+public class Player extends Entity<PlayerId> {
 
 
-    public Player() {
+    private final Nickname nickname;
+
+    private final Deck deck;
+
+    private final Score score;
+
+    public Player(PlayerId entityId, Nickname nickname, Deck deck, Score score) {
+        super(entityId);
+        this.nickname = nickname;
+        this.deck = deck;
+        this.score = score;
     }
 
-    public Player(String id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

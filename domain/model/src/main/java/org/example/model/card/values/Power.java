@@ -4,12 +4,12 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Power implements ValueObject<String> {
+public class Power implements ValueObject<Integer> {
 
-    private final String value;
+    private final Integer value;
 
-    public Power(String value){ this.value = Objects.requireNonNull(value, "Poder es requerido"); }
+    public Power(Integer value){ this.value = Objects.requireNonNull(value, "Poder es requerido"); }
 
     @Override
-    public String value() { return value; }
+    public Integer value() { return value; }
 }

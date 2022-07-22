@@ -1,70 +1,23 @@
 package org.example.model.deck;
 
+import co.com.sofka.domain.generic.Entity;
+import org.example.model.deck.values.DeckId;
+import org.example.model.deck.values.Quantity;
 import org.example.model.game.Game;
 import org.example.model.player.Player;
 import org.example.model.card.Card;
 
 import java.util.Set;
 
-public class Deck {
+public class Deck extends Entity<DeckId> {
 
-    private String id;
+    private final Set<Card> cards;
 
-    private Player player;
+    private final Quantity quantity;
 
-    private Game game;
-
-    private Set<Card> cards;
-
-    public Deck() {
-    }
-
-    public Deck(String id, Player player, Game game, Set<Card> cards) {
-        this.id = id;
-        this.player = player;
-        this.game = game;
+    public Deck(DeckId entityId, Set<Card> cards, Quantity quantity) {
+        super(entityId);
         this.cards = cards;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public Set<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(Set<Card> cards) {
-        this.cards = cards;
-    }
-
-    @Override
-    public String toString() {
-        return "Deck{" +
-                "id='" + id + '\'' +
-                ", player=" + player +
-                ", game=" + game +
-                ", cards=" + cards +
-                '}';
+        this.quantity = quantity;
     }
 }
