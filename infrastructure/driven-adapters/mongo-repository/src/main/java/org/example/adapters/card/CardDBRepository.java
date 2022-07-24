@@ -1,6 +1,6 @@
 package org.example.adapters.card;
 
-import org.example.adapters.MongoDBRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-public interface CardDBRepository extends MongoDBRepository<CardDocument, String> {
+public interface CardDBRepository extends ReactiveCrudRepository<CardDocument, String> {
 }

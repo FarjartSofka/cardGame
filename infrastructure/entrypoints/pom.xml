@@ -29,11 +29,15 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
             <version>${spring-boot-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>9.0.53</version>
         </dependency>
     </dependencies>
 

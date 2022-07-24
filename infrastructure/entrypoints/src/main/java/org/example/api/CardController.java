@@ -1,32 +1,21 @@
 package org.example.api;
 
-import org.example.model.CardContext.card.Card;
-import org.example.usecase.ProcessCardUseCase;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
-@Component
-@RestController
-@RequestMapping("/card")
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+
+
+@Configuration
 public class CardController {
 
-    private final ProcessCardUseCase processCardUseCase;
-
-
-    public CardController(ProcessCardUseCase processCardUseCase) {
-        this.processCardUseCase = processCardUseCase;
+    @Bean
+    public RouterFunction<ServerResponse> routerFunction(CardHandler handler) {
+        return  route(POST("/card/create"), handler::save)
+                .andRoute(GET("/card/all"), handler::findAll )
+                .andRoute(GET("/card/{id}"), handler::findById);
     }
-
-    @PostMapping("/create")
-    public Mono<Card> save(@RequestBody Card card){
-        return processCardUseCase.save(card);
-    }
-
-    @GetMapping("/all")
-    public Flux<Card> allCards(){ return processCardUseCase.allCards(); }
-
-    @GetMapping("/card/{id}")
-    public Mono<Card> cardById(@PathVariable("id") String cardId){ return processCardUseCase.cardById(cardId); }
 }

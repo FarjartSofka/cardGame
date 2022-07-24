@@ -17,13 +17,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Configuration
-@ComponentScan(basePackages = {"org.example.cardGame.usecase", "org.example.cardGame.model", "org.example.cardGame.adapters",
-        "org.example.cardGame.controller", "org.example.cardGame.handler", "org.example.cardGame.event"},
+@ComponentScan(basePackages = { "org.example.model" , "org.example.adapters", "org.example.api", "org.example.usecase", "org.example.*"},
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$"),
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+Repository$"),
@@ -35,7 +38,9 @@ import java.util.List;
         useDefaultFilters = false)
 public class ApplicationConfig {
 
-    public static final String EXCHANGE = "cardGame";
+    private String origin = "*";
+
+    public static final String EXCHANGE = "cardgame";
 
     @Bean
     public MongoDBSecret dbSecret(Environment env) {
@@ -46,7 +51,6 @@ public class ApplicationConfig {
     public ReactiveMongoClientFactory mongoProperties(MongoDBSecret secret, Environment env) {
         MongoProperties properties = new MongoProperties();
         properties.setUri(secret.getUri());
-
         List<MongoClientSettingsBuilderCustomizer> list = new ArrayList<>();
         list.add(new MongoPropertiesClientSettingsBuilderCustomizer(properties, env));
         return new ReactiveMongoClientFactory(list);
@@ -75,4 +79,24 @@ public class ApplicationConfig {
         admin.declareExchange(new TopicExchange(EXCHANGE));
         return admin;
     }
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                if (!origin.isBlank()) {
+                    Logger.getLogger("config").info("Allowed Origin ==> " + origin);
+                    registry.addMapping("/**").allowedOrigins(origin);
+                }
+            }
+        };
+    }
+
+
 }

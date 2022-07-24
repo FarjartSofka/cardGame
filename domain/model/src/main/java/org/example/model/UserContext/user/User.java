@@ -1,20 +1,21 @@
 package org.example.model.UserContext.user;
 
-import co.com.sofka.domain.generic.Entity;
-import org.example.model.UserContext.user.values.*;
 
-public class User extends Entity<UserId> {
 
-    private final Name name;
+public class User{
 
-    private final Email email;
+    private String userId;
 
-    private final Role role;
+    private String name;
 
-    private final Points points;
+    private String email;
 
-    public User(UserId entityId, Name name, Email email, Role role, Points points) {
-        super(entityId);
+    private String role;
+
+    private Integer points;
+
+    public User(String userId, String name, String email, String role, Integer points) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.role = role;

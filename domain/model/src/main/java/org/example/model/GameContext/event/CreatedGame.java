@@ -1,4 +1,4 @@
-package org.example.model.GameContext.game.event;
+package org.example.model.GameContext.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
 
