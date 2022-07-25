@@ -17,16 +17,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
+/*import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;*/
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Configuration
-@ComponentScan(basePackages = { "org.example.model" , "org.example.adapters", "org.example.api", "org.example.usecase", "org.example.*"},
+@ComponentScan(basePackages = { "org.example.model" , "org.example.adapters", "org.example.api", "org.example.usecase", "org.example.api", "org.example.*"},
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+UseCase$"),
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "^.+Repository$"),
@@ -80,7 +80,7 @@ public class ApplicationConfig {
         return admin;
     }
 
-    @Bean
+    /*@Bean
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();
     }
@@ -96,7 +96,7 @@ public class ApplicationConfig {
                 }
             }
         };
-    }
+    }*/
 
 
 }
