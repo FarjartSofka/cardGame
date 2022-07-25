@@ -5,6 +5,8 @@ import org.example.model.CardContext.card.gateway.CardRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 public class CardsUseCase {
 
     private final CardRepository cardRepository;
@@ -13,10 +15,14 @@ public class CardsUseCase {
         this.cardRepository = cardRepository;
     }
 
-    public Mono<Card> save(Card card) { return cardRepository.save(card); }
+    public Mono<Card> save(Card card) { return cardRepository.save(card);}
+
+    public Flux<Card> saveAll(Flux<Card> card) { return cardRepository.saveAll(card);}
+
 
     public Flux<Card> allCards() {
         return cardRepository.findAll();
+
     }
 
     public Mono<Card> cardById(String id) {
