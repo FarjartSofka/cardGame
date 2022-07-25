@@ -20,7 +20,7 @@ public class RabbitMQConsumer {
     @Autowired
     private EventListenerSubscriber eventListenerSubscriber;
     @Autowired
-    private SocketController socketController;
+   // private SocketController socketController;
     private static final Logger log = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
 
@@ -34,6 +34,11 @@ public class RabbitMQConsumer {
     }
 
     private void messageShared(Message<String> message) {
+
+        var successNotification = SuccessNotificationSerializer.instance().deserialize(message.getPayload());
+        var event = successNotification.deserializeEvent();
+        log.info("Llego este evento: {}", event);
+        /*
         var successNotification = SuccessNotificationSerializer.instance().deserialize(message.getPayload());
         var event = successNotification.deserializeEvent();
         var sb = new StringBuilder("DomainEvent{");
@@ -49,6 +54,7 @@ public class RabbitMQConsumer {
         } catch (Exception e) {
             this.eventListenerSubscriber.onError(e);
         }
+        */
     }
 
 }
