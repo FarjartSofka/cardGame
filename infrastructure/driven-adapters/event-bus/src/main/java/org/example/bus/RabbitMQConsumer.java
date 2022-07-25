@@ -1,7 +1,6 @@
 package org.example.bus;
 
 import co.com.sofka.infraestructure.bus.serialize.SuccessNotificationSerializer;
-import org.example.api.SocketController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -11,8 +10,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class RabbitMQConsumer {

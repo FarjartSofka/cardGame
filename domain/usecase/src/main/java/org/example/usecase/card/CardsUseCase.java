@@ -15,11 +15,11 @@ public class CardsUseCase {
 
     public Mono<Card> save(Card card) { return cardRepository.save(card); }
 
-    public Flux<Card> findAll() {
+    public Flux<Card> allCards() {
         return cardRepository.findAll();
     }
 
-    public Mono<Card> findById(String id) {
+    public Mono<Card> cardById(String id) {
         return cardRepository.findById(id);
     }
 
