@@ -1,4 +1,4 @@
-package org.example.api;
+package org.example.api.handler;
 
 import co.com.sofka.infraestructure.asyn.SubscriberEvent;
 import co.com.sofka.infraestructure.repository.EventStoreRepository;
@@ -45,16 +45,16 @@ public class CardHandler {
     public Mono<ServerResponse> findAll(ServerRequest request){
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(useCase.findAll(), Card.class);
+                .body(useCase.allCards(), Card.class);
     }
 
     public Mono<ServerResponse> findById(ServerRequest request){
         var id = request.pathVariable("id");
-        return useCase.findById(id)
-                .flatMap(pet -> ServerResponse
+        return useCase.cardById(id)
+                .flatMap(card -> ServerResponse
                         .ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(fromValue(pet)))
+                        .body(fromValue(card)))
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
 

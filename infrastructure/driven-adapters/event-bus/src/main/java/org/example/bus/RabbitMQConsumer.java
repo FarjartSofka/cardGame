@@ -1,7 +1,6 @@
 package org.example.bus;
 
 import co.com.sofka.infraestructure.bus.serialize.SuccessNotificationSerializer;
-import org.example.api.SocketController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -12,15 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class RabbitMQConsumer {
 
     @Autowired
     private EventListenerSubscriber eventListenerSubscriber;
     @Autowired
-    private SocketController socketController;
+   // private SocketController socketController;
     private static final Logger log = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
 
@@ -34,6 +31,11 @@ public class RabbitMQConsumer {
     }
 
     private void messageShared(Message<String> message) {
+
+        var successNotification = SuccessNotificationSerializer.instance().deserialize(message.getPayload());
+        var event = successNotification.deserializeEvent();
+        log.info("Llego este evento: {}", event);
+        /*
         var successNotification = SuccessNotificationSerializer.instance().deserialize(message.getPayload());
         var event = successNotification.deserializeEvent();
         var sb = new StringBuilder("DomainEvent{");
@@ -49,6 +51,7 @@ public class RabbitMQConsumer {
         } catch (Exception e) {
             this.eventListenerSubscriber.onError(e);
         }
+        */
     }
 
 }

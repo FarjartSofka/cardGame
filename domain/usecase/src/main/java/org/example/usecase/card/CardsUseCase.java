@@ -20,12 +20,12 @@ public class CardsUseCase {
     public Flux<Card> saveAll(Flux<Card> card) { return cardRepository.saveAll(card);}
 
 
-    public Flux<Card> findAll() {
+    public Flux<Card> allCards() {
         return cardRepository.findAll();
 
     }
 
-    public Mono<Card> findById(String id) {
+    public Mono<Card> cardById(String id) {
         return cardRepository.findById(id);
     }
 
