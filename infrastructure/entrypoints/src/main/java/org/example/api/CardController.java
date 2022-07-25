@@ -3,6 +3,7 @@ package org.example.api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
@@ -14,8 +15,9 @@ public class CardController {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction(CardHandler handler) {
-        return  route(POST("/card/create"), handler::save)
-                .andRoute(GET("/card/all"), handler::findAll )
-                .andRoute(GET("/card/{id}"), handler::findById);
+        return RouterFunctions.nest(path("card"),route(POST("/create"), handler::save)
+                .andRoute(POST("/save-all"), handler::saveAll)
+                .andRoute(GET("/all"), handler::findAll )
+                .andRoute(GET("/{id}"), handler::findById)) ;
     }
 }

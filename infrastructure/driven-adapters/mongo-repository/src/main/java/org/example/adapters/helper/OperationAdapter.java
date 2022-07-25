@@ -29,6 +29,7 @@ public abstract class OperationAdapter<E, D, I, R extends ReactiveCrudRepository
                 .map(this::mapToEntity);
     }
 
+
     public Flux<E> findAll() {
         return repository.findAll()
                 .map(this::mapToEntity);
@@ -43,11 +44,11 @@ public abstract class OperationAdapter<E, D, I, R extends ReactiveCrudRepository
         return repository.deleteById(id);
     }
 
-    private D mapToDocument(E entity) {
+    protected D mapToDocument(E entity) {
         return mapper.map(entity, dataClass);
     }
 
-    private E mapToEntity(D document) {
+    protected  E mapToEntity(D document) {
         return toEntityFn.apply(document);
     }
 }
