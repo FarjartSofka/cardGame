@@ -11,10 +11,10 @@ public class Card extends Entity<CardId> {
 
     private final isLocked lock;
 
-    public Card(CardId entityId, isHidden hidden, isLocked lock) {
+    public Card(CardId entityId) {
         super(entityId);
-        this.hidden = hidden;
-        this.lock = lock;
+        this.hidden = new isHidden(true);
+        this.lock = new isLocked(false);
     }
 
     public isHidden hidden() { return hidden; }

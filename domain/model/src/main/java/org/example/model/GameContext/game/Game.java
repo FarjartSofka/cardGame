@@ -6,6 +6,7 @@ import org.example.model.GameContext.board.Board;
 import org.example.model.GameContext.board.values.BoardId;
 import org.example.model.GameContext.card.Card;
 import org.example.model.GameContext.card.CardFactory;
+import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.event.*;
 import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.game.values.Round;
@@ -23,6 +24,8 @@ public class Game extends AggregateEvent<GameId> {
     protected Set<Player> players;
 
     protected Set<Round> round;
+
+    protected Deck deck;
 
     protected Player winner;
 
@@ -75,5 +78,7 @@ public class Game extends AggregateEvent<GameId> {
                 .findFirst();
     }
 
+    public Deck getDeck() { return deck; }
 
+    public Set<Player> getPlayers() { return players; }
 }
