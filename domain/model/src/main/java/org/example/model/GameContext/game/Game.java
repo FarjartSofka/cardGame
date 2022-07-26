@@ -49,9 +49,9 @@ public class Game extends AggregateEvent<GameId> {
         appendChange( new CreatedGame()).apply();
     }
 
-    public static Game from(GameId gameId, List<DomainEvent> events) {
+    public static Game from(GameId gameId) {
         var game = new Game(gameId);
-        events.forEach(game::applyEvent);
+
         return game;
     }
 

@@ -8,5 +8,5 @@ spring:
       uri: mongodb+srv://admin:Reto3@cluster0.o9brs.mongodb.net/cardgame?retryWrites=true&w=majority
       #uri: mongodb://localhost:27017/cardgame
   rabbbitmq:
-    addressess: amqps://ayhynvzw:zC-RHutoDLtAE_h2H26Z8WP4w0nsppSy@jackal.rmq.cloudamqp.com/ayhynvzw
+    addressess: amqps://ruwhqudj:i_nOid9etqsRlwn3tk6trdDyWIx1ws6H@jackal.rmq.cloudamqp.com/ruwhqudj
     #addressess: amqps://localhost:5672/
