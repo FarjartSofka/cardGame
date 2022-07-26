@@ -19,11 +19,7 @@ public class CardsUseCase {
 
     public Flux<Card> saveAll(Flux<Card> card) { return cardRepository.saveAll(card);}
 
-
-    public Flux<Card> allCards() {
-        return cardRepository.findAll();
-
-    }
+    public Flux<Card> allCards() { return cardRepository.findAll();  }
 
     public Mono<Card> cardById(String id) {
         return cardRepository.findById(id);

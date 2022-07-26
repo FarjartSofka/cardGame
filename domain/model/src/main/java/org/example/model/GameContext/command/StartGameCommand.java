@@ -1,12 +1,13 @@
 package org.example.model.GameContext.command;
 
 import co.com.sofka.domain.generic.Command;
+import org.example.model.GameContext.game.values.GameId;
 
 public class StartGameCommand extends Command {
 
-    private final String gameId;
+    private final GameId gameId;
 
-    public StartGameCommand(String gameId) { this.gameId = gameId; }
+    public StartGameCommand(GameId gameId) { this.gameId = gameId; }
 
-    public String getGameId() { return gameId; }
+    public GameId getGameId() { return gameId; }
 }

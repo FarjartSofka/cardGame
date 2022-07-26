@@ -1,4 +1,4 @@
-package org.example.model.GameContext.Card.values;
+package org.example.model.GameContext.card.values;
 
 import co.com.sofka.domain.generic.Identity;
 

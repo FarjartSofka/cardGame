@@ -19,9 +19,7 @@ public class CreateGameCommand extends Command {
         this.playersId = playersId;
     }
 
-    public String getGameId() {
-        return gameId;
-    }
+    public String getGameId() { return gameId; }
 
     public void setGameId(String gameId) {
         this.gameId = gameId;

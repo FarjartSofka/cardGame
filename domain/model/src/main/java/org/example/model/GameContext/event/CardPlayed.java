@@ -15,4 +15,8 @@ public class CardPlayed extends DomainEvent {
         this.playerId = playerId;
         this.cardId = cardId;
     }
+
+    public String getPlayerId() {  return playerId; }
+
+    public String getCardId() { return cardId; }
 }

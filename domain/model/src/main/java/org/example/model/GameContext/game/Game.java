@@ -4,11 +4,12 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import org.example.model.GameContext.board.Board;
 import org.example.model.GameContext.board.values.BoardId;
+import org.example.model.GameContext.card.Card;
+import org.example.model.GameContext.card.CardFactory;
 import org.example.model.GameContext.event.*;
 import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.game.values.Round;
 import org.example.model.GameContext.player.Player;
-import org.example.model.GameContext.player.values.CardsOnDeck;
 import org.example.model.GameContext.player.values.PlayerId;
 
 import java.util.*;
@@ -44,14 +45,14 @@ public class Game extends AggregateEvent<GameId> {
         return game;
     }
 
-    public void startGame(Map<PlayerId, Set<CardsOnDeck>> deck) {
+    public void startGame(GameId gameId,Map<PlayerId, Set<Card>> deck) {
         deck
                 .forEach((playerId, deckSet) ->
-                        appendChange(new DistributedCards(playerId, deckSet)).apply()
+                        appendChange(new DistributedCards(gameId, playerId, deckSet)).apply()
                 );
     }
 
-    public void addCardToBoard(PlayerId playerId, CardsOnDeck cards) {
+    public void addCardToBoard(PlayerId playerId, CardFactory cards) {
         appendChange(new AddedCardtoPlayer(playerId, cards)).apply();
     }
 

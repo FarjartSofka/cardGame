@@ -1,28 +1,36 @@
 package org.example.model.GameContext.command;
 
 import co.com.sofka.domain.generic.Command;
+import org.example.model.GameContext.card.values.CardId;
+import org.example.model.GameContext.game.values.GameId;
+import org.example.model.GameContext.player.values.PlayerId;
+import org.example.model.GameContext.round.values.RoundId;
 
 public class PlayCardCommand extends Command {
 
-    private String gameId;
+    private GameId gameId;
 
-    private String playerId;
+    private PlayerId playerId;
 
-    private String cardId;
+    private RoundId roundId;
+
+    private CardId cardId;
 
     public PlayCardCommand() {
     }
 
-    public PlayCardCommand(String gameId, String playerId, String cardId) {
+    public PlayCardCommand(GameId gameId, PlayerId playerId, RoundId roundId, CardId cardId) {
         this.gameId = gameId;
         this.playerId = playerId;
+        this.roundId = roundId;
         this.cardId = cardId;
     }
 
-    public String getGameId() { return gameId; }
+    public GameId getGameId() { return gameId; }
 
-    public String getPlayerId() { return playerId; }
+    public PlayerId getPlayerId() { return playerId; }
 
-    public String getCardId() { return cardId; }
+    public RoundId getRoundId() { return roundId; }
 
+    public CardId getCardId() { return cardId; }
 }

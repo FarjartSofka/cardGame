@@ -1,9 +1,9 @@
-package org.example.model.GameContext.Card;
+package org.example.model.GameContext.card;
 
 import co.com.sofka.domain.generic.Entity;
-import org.example.model.GameContext.Card.values.CardId;
-import org.example.model.GameContext.Card.values.isHidden;
-import org.example.model.GameContext.Card.values.isLocked;
+import org.example.model.GameContext.card.values.CardId;
+import org.example.model.GameContext.card.values.isHidden;
+import org.example.model.GameContext.card.values.isLocked;
 
 public class Card extends Entity<CardId> {
 

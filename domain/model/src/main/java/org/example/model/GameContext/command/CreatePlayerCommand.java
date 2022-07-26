@@ -6,12 +6,15 @@ import org.example.model.GameContext.player.values.PlayerId;
 
 public class CreatePlayerCommand extends Command {
 
+    private GameId gameId;
+
     private PlayerId playerId;
 
     public CreatePlayerCommand() {
     }
 
-    public CreatePlayerCommand(PlayerId playerId) {
+    public CreatePlayerCommand(GameId gameId, PlayerId playerId) {
+        this.gameId = gameId;
         this.playerId = playerId;
     }
 
@@ -20,4 +23,8 @@ public class CreatePlayerCommand extends Command {
     public void setPlayerId(PlayerId playerId) {
         this.playerId = playerId;
     }
+
+    public GameId getGameId() { return gameId; }
+
+    public void setGameId(GameId gameId) { this.gameId = gameId; }
 }

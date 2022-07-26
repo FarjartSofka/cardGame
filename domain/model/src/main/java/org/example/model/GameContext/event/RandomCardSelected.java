@@ -1,16 +1,17 @@
 package org.example.model.GameContext.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import org.example.model.GameContext.deck.values.DeckId;
+import org.example.model.GameContext.card.Card;
+
 
 public class RandomCardSelected extends DomainEvent {
 
-    private final DeckId cardId;
+    private final Card cardId;
 
-    public RandomCardSelected(DeckId cardId) {
+    public RandomCardSelected(Card cardId) {
         super("cardgame.RandomCardSelected");
         this.cardId = cardId;
     }
 
-    public DeckId cardId() { return cardId; }
+    public Card cardId() { return cardId; }
 }
