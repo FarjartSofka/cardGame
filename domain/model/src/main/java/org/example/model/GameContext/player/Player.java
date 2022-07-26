@@ -22,6 +22,7 @@ public class Player extends Entity<PlayerId> {
         this.nickname = nickname;
     }
 
+
     public Score score() {
         return score;
     }

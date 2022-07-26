@@ -41,7 +41,7 @@ public class DealCardsUseCase extends UseCase<RequestCommand<DealCardsCommand>, 
         var card = cardRepository.findAll().collectList().block();
         Collections.shuffle(card);
 
-        card.stream()
-                .forEach(cardtoDeck -> cardFactory.add(new Card(cardtoDeck.getId(),car));
+        /*card.stream()
+                .forEach(cardtoDeck -> cardFactory.add(new Card(cardtoDeck.getId(),card)));*/
     }
 }

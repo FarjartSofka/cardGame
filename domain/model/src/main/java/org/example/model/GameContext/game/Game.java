@@ -10,6 +10,8 @@ import org.example.model.GameContext.event.*;
 import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.game.values.Round;
 import org.example.model.GameContext.player.Player;
+import org.example.model.GameContext.player.values.Nickname;
+
 import org.example.model.GameContext.player.values.PlayerId;
 
 import java.util.*;
@@ -34,9 +36,14 @@ public class Game extends AggregateEvent<GameId> {
     }
 
 
+
+
+
+
     public Game(GameId entityId) {
         super(entityId);
         subscribe(new GameEventChange(this));
+        appendChange( new CreatedGame()).apply();
     }
 
     public static Game from(GameId gameId, List<DomainEvent> events) {
@@ -54,6 +61,10 @@ public class Game extends AggregateEvent<GameId> {
 
     public void addCardToBoard(PlayerId playerId, CardFactory cards) {
         appendChange(new AddedCardtoPlayer(playerId, cards)).apply();
+    }
+
+    public void addPlayer(PlayerId playerId, Nickname nickname){
+        appendChange(new CreatedPlayer(playerId.value(), nickname.value() )).apply();
     }
 
 

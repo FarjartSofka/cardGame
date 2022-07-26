@@ -6,6 +6,7 @@ public class Nickname implements ValueObject<String> {
 
     private final String value;
 
+
     public Nickname(String value) {
         this.value = value;
     }
