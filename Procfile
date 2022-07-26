@@ -1,1 +1,1 @@
-git web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/cardGame-1.0-SNAPSHOT.jar
+git web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/applications-1.0-SNAPSHOT.jar
