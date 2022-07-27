@@ -17,7 +17,7 @@ import org.springframework.core.env.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 @Configuration
 @ComponentScan(basePackages = { "org.example.model" , "org.example.adapters", "org.example.api", "org.example.usecase", "org.example.api", "org.example.*"},
@@ -52,17 +52,6 @@ public class ApplicationConfig {
         return new ObjectMapperI();
     }
 
-    /*@Bean
-    public SubscriberEvent subscriberEvent(EventStoreRepository eventStoreRepository, EventBus eventBus) {
-        return new SubscriberEvent(eventStoreRepository, eventBus);
-    }
-
-    @Bean
-    public ServiceBuilder serviceBuilder(
-    ) {
-        ServiceBuilder serviceBuilder = new ServiceBuilder();
-        return serviceBuilder;
-    }*/
 
     @Bean
     public RabbitAdmin rabbitmqAdmin(RabbitTemplate rabbitmqTemplate) {

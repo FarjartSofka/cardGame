@@ -1,28 +1,33 @@
 package org.example.api.handler;
 import org.example.model.GameContext.command.CreateGameCommand;
+import org.example.model.generic.DomainEvent;
+import org.example.model.generic.EventBus;
+import org.example.model.generic.EventStoreRepository;
+import org.example.model.generic.StoredEvent;
 import org.example.usecase.game.CreateGameUseCase;
-import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-public class GameHandler {
-
+public class GameHandler extends Handler {
     private final CreateGameUseCase createGameUseCase;
 
-
-
-    public GameHandler(CreateGameUseCase createGameUseCase) {
+    public GameHandler(CreateGameUseCase createGameUseCase, EventStoreRepository repository, StoredEvent.EventSerializer eventSerializer, EventBus eventBus) {
+        super(repository, eventSerializer,eventBus);
         this.createGameUseCase = createGameUseCase;
     }
 
     public Mono<ServerResponse> save(ServerRequest request) {
-        var command = request.bodyToFlux(CreateGameCommand.class);
 
-       return command.flatMap(createGameUseCase::apply).collectList()
-                .flatMap(list -> ServerResponse.ok().body(BodyInserters.fromValue(list)));
-
-
+       return request.bodyToMono(CreateGameCommand.class)
+               .flatMapMany(this.createGameUseCase::apply)
+               .flatMap(domainEvent -> emit(Mono.just(domainEvent)))
+               .then(ServerResponse
+                       .status(HttpStatus.CREATED)
+                       .contentType(MediaType.APPLICATION_JSON)
+                       .build());
 
     }
 }
