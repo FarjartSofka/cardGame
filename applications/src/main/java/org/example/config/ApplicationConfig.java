@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
+import org.yeauty.standard.ServerEndpointExporter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,11 @@ public class ApplicationConfig {
         var admin = new RabbitAdmin(rabbitmqTemplate);
         admin.declareExchange(new TopicExchange(EXCHANGE));
         return admin;
+    }
+
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
     }
 
 

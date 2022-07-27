@@ -1,6 +1,5 @@
 package org.example.api.handler;
 import org.example.model.GameContext.command.CreateGameCommand;
-import org.example.model.generic.DomainEvent;
 import org.example.model.generic.EventBus;
 import org.example.model.generic.EventStoreRepository;
 import org.example.model.generic.StoredEvent;
@@ -21,13 +20,14 @@ public class GameHandler extends Handler {
 
     public Mono<ServerResponse> save(ServerRequest request) {
 
-       return request.bodyToMono(CreateGameCommand.class)
-               .flatMapMany(this.createGameUseCase::apply)
+       var requestMono = request.bodyToMono(CreateGameCommand.class);
+
+       return  requestMono.flatMapMany(this.createGameUseCase)
                .flatMap(domainEvent -> emit(Mono.just(domainEvent)))
                .then(ServerResponse
                        .status(HttpStatus.CREATED)
                        .contentType(MediaType.APPLICATION_JSON)
-                       .build());
+                       .body(requestMono, CreateGameCommand.class));
 
     }
 }
