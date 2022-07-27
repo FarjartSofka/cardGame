@@ -6,13 +6,11 @@ import org.example.model.CardContext.card.Card;
 import org.example.usecase.card.CardsUseCase;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
-import java.util.List;
 
 import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 
