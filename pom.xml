@@ -12,10 +12,10 @@
         <module>applications</module>
         <module>domain/model</module>
         <module>domain/usecase</module>
-        <module>entry-points/apiRest</module>
+        <module>infrastructure/entry-points/apiRest</module>
         <module>infrastructure/driven-adapters/mongo-repository</module>
         <module>infrastructure/driven-adapters/event-bus</module>
-        <module>entry-points/webSocket</module>
+        <module>infrastructure/entry-points/webSocket</module>
     </modules>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
