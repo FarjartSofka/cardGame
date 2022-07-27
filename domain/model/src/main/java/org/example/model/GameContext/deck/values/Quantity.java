@@ -1,6 +1,6 @@
 package org.example.model.GameContext.deck.values;
 
-import co.com.sofka.domain.generic.ValueObject;
+import org.example.model.generic.ValueObject;
 
 import java.util.Objects;
 

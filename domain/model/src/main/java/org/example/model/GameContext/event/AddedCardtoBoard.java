@@ -1,9 +1,9 @@
 package org.example.model.GameContext.event;
 
-import co.com.sofka.domain.generic.DomainEvent;
 
 import org.example.model.GameContext.card.Card;
 import org.example.model.GameContext.player.values.PlayerId;
+import org.example.model.generic.DomainEvent;
 
 public class AddedCardtoBoard extends DomainEvent {
 

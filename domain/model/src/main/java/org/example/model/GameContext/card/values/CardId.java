@@ -1,6 +1,6 @@
 package org.example.model.GameContext.card.values;
 
-import co.com.sofka.domain.generic.Identity;
+import org.example.model.generic.Identity;
 
 public class CardId extends Identity {
 

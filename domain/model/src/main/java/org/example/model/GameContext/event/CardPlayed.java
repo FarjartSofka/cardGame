@@ -1,6 +1,6 @@
 package org.example.model.GameContext.event;
 
-import co.com.sofka.domain.generic.DomainEvent;
+import org.example.model.generic.DomainEvent;
 
 import java.util.UUID;
 

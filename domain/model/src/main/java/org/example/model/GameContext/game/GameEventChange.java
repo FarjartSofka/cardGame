@@ -1,6 +1,6 @@
 package org.example.model.GameContext.game;
 
-import co.com.sofka.domain.generic.EventChange;
+import org.example.model.generic.EventChange;
 import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.deck.values.DeckId;
 import org.example.model.GameContext.event.*;

@@ -1,13 +1,9 @@
 package org.example.api.handler;
-
-import co.com.sofka.domain.generic.DomainEvent;
 import org.example.model.GameContext.command.CreateGameCommand;
 import org.example.usecase.game.CreateGameUseCase;
-import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class GameHandler {

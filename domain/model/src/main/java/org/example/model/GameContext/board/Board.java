@@ -1,10 +1,10 @@
 package org.example.model.GameContext.board;
 
-import co.com.sofka.domain.generic.Entity;
 import org.example.model.CardContext.card.Card;
 import org.example.model.GameContext.board.values.BoardId;
 import org.example.model.GameContext.board.values.Time;
 import org.example.model.GameContext.player.values.PlayerId;
+import org.example.model.generic.Entity;
 
 import java.util.Map;
 

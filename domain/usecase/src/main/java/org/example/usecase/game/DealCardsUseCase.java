@@ -1,6 +1,5 @@
 package org.example.usecase.game;
 
-import co.com.sofka.domain.generic.DomainEvent;
 import org.example.model.GameContext.card.Card;
 import org.example.model.CardContext.card.gateway.CardRepository;
 import org.example.model.GameContext.card.CardFactory;
@@ -10,6 +9,7 @@ import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.game.Game;
 import org.example.model.GameContext.game.values.GameId;
 
+import org.example.model.generic.DomainEvent;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;

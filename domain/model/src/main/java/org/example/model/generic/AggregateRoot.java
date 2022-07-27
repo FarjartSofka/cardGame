@@ -17,7 +17,7 @@ public abstract class AggregateRoot<T extends Identity> extends Entity<T> {
      *
      * @param entityId the entity id
      */
-    public AggregateRoot(T entityId) {
+    protected AggregateRoot(T entityId) {
         super(entityId);
     }
 

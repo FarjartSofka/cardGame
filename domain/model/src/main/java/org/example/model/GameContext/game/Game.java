@@ -1,7 +1,7 @@
 package org.example.model.GameContext.game;
 
-import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.domain.generic.DomainEvent;
+import org.example.model.generic.AggregateEvent;
+import org.example.model.generic.DomainEvent;
 import org.example.model.GameContext.board.Board;
 import org.example.model.GameContext.board.values.BoardId;
 import org.example.model.GameContext.card.Card;

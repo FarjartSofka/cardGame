@@ -1,11 +1,10 @@
-package org.example.adapters.events;
+package org.example.adapters.helper;
 
 import org.example.model.generic.StoredEvent;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
-@Document
+@Component
 public class DocumentEventStored {
-
     private String aggregateRootId;
 
     private StoredEvent storedEvent;
@@ -25,5 +24,4 @@ public class DocumentEventStored {
     public void setStoredEvent(StoredEvent storedEvent) {
         this.storedEvent = storedEvent;
     }
-
 }

@@ -19,7 +19,7 @@ public abstract class AggregateEvent<T extends Identity> extends AggregateRoot<T
      *
      * @param entityId the entity id
      */
-    public AggregateEvent(T entityId) {
+    protected AggregateEvent(T entityId) {
         super(entityId);
         changeEventSubscriber = new ChangeEventSubscriber();
     }

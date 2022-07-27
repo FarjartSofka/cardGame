@@ -1,9 +1,6 @@
 package org.example.config;
 
-import co.com.sofka.business.generic.ServiceBuilder;
-import co.com.sofka.infraestructure.asyn.SubscriberEvent;
-import co.com.sofka.infraestructure.bus.EventBus;
-import co.com.sofka.infraestructure.repository.EventStoreRepository;
+
 import org.reactivecommons.utils.ObjectMapperI;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -17,9 +14,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
-/*import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;*/
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +32,7 @@ import java.util.logging.Logger;
         useDefaultFilters = false)
 public class ApplicationConfig {
 
-    private String origin = "*";
-
     public static final String EXCHANGE = "cardgame";
-
     @Bean
     public MongoDBSecret dbSecret(Environment env) {
         return new MongoDBSecret(env.getProperty("spring.data.mongodb.uri"));
@@ -56,12 +47,12 @@ public class ApplicationConfig {
         return new ReactiveMongoClientFactory(list);
     }
 
-    @Bean
+   @Bean
     public ObjectMapperI objectMapperI() {
         return new ObjectMapperI();
     }
 
-    @Bean
+    /*@Bean
     public SubscriberEvent subscriberEvent(EventStoreRepository eventStoreRepository, EventBus eventBus) {
         return new SubscriberEvent(eventStoreRepository, eventBus);
     }
@@ -71,7 +62,7 @@ public class ApplicationConfig {
     ) {
         ServiceBuilder serviceBuilder = new ServiceBuilder();
         return serviceBuilder;
-    }
+    }*/
 
     @Bean
     public RabbitAdmin rabbitmqAdmin(RabbitTemplate rabbitmqTemplate) {
@@ -80,23 +71,7 @@ public class ApplicationConfig {
         return admin;
     }
 
-    /*@Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                if (!origin.isBlank()) {
-                    Logger.getLogger("config").info("Allowed Origin ==> " + origin);
-                    registry.addMapping("/**").allowedOrigins(origin);
-                }
-            }
-        };
-    }*/
 
 
 }

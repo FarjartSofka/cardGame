@@ -1,7 +1,5 @@
 package org.example.api.handler;
 
-import co.com.sofka.infraestructure.asyn.SubscriberEvent;
-import co.com.sofka.infraestructure.repository.EventStoreRepository;
 import org.example.model.CardContext.card.Card;
 import org.example.usecase.card.CardsUseCase;
 import org.springframework.http.MediaType;
@@ -19,13 +17,10 @@ public class CardHandler {
 
     private final CardsUseCase useCase;
 
-    private  EventStoreRepository eventStoreRepository;
-    private  SubscriberEvent subscriberEvent;
 
-    public CardHandler(CardsUseCase useCase, EventStoreRepository eventStoreRepository, SubscriberEvent subscriberEvent) {
+
+    public CardHandler(CardsUseCase useCase) {
         this.useCase = useCase;
-        this.eventStoreRepository = eventStoreRepository;
-        this.subscriberEvent = subscriberEvent;
     }
 
     public Mono<ServerResponse> save(ServerRequest request){

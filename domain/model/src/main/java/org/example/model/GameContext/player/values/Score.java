@@ -1,6 +1,6 @@
 package org.example.model.GameContext.player.values;
 
-import co.com.sofka.domain.generic.ValueObject;
+import org.example.model.generic.ValueObject;
 
 public class Score implements ValueObject<Integer> {
 

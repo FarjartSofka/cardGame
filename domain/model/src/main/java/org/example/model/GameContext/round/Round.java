@@ -1,6 +1,6 @@
 package org.example.model.GameContext.round;
 
-import co.com.sofka.domain.generic.Entity;
+import org.example.model.generic.Entity;
 import org.example.model.GameContext.player.values.PlayerId;
 import org.example.model.GameContext.round.values.RoundId;
 import org.example.model.GameContext.round.values.RoundNumber;

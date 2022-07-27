@@ -1,9 +1,9 @@
 package org.example.model.GameContext.deck;
 
-import co.com.sofka.domain.generic.Entity;
 import org.example.model.GameContext.deck.values.DeckId;
 import org.example.model.GameContext.deck.values.Quantity;
 import org.example.model.GameContext.card.Card;
+import org.example.model.generic.Entity;
 
 import java.util.Set;
 

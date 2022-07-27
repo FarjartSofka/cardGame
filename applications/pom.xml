@@ -44,13 +44,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>2.6.8</version>
+            <version>${spring-boot-version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-            <version>2.7.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.reactivecommons</groupId>
             <artifactId>object-mapper</artifactId>

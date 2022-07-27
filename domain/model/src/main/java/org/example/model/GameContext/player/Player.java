@@ -1,7 +1,7 @@
 package org.example.model.GameContext.player;
 
 
-import co.com.sofka.domain.generic.Entity;
+import org.example.model.generic.Entity;
 import org.example.model.GameContext.card.Card;
 import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.player.values.Score;

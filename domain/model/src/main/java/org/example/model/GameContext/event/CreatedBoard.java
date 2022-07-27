@@ -1,6 +1,6 @@
 package org.example.model.GameContext.event;
 
-import co.com.sofka.domain.generic.DomainEvent;
+import org.example.model.generic.DomainEvent;
 import org.example.model.GameContext.board.values.BoardId;
 
 public class CreatedBoard extends DomainEvent {

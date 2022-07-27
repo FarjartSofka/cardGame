@@ -1,6 +1,7 @@
 package org.example.model.GameContext.board.values;
 
-import co.com.sofka.domain.generic.Identity;
+
+import org.example.model.generic.Identity;
 
 public class BoardId extends Identity {
 }

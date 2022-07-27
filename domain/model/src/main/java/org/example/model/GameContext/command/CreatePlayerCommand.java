@@ -1,8 +1,8 @@
 package org.example.model.GameContext.command;
 
-import co.com.sofka.domain.generic.Command;
 import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.player.values.PlayerId;
+import org.example.model.generic.Command;
 
 public class CreatePlayerCommand extends Command {
 

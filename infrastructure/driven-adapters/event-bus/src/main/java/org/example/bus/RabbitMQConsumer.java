@@ -1,6 +1,5 @@
 package org.example.bus;
 
-import co.com.sofka.infraestructure.bus.serialize.SuccessNotificationSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.Exchange;
