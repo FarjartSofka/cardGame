@@ -16,14 +16,11 @@ public class WinnedCards extends DomainEvent {
 
     private final RoundId roundId;
 
-    private final Set<PlayCard> playCards;
-
-    public WinnedCards(GameId gameId, PlayerId playerId, RoundId roundId, Set<PlayCard> playCards) {
+    public WinnedCards(GameId gameId, PlayerId playerId, RoundId roundId) {
         super("cardgame.WinnedCards");
         this.gameId = gameId;
         this.playerId = playerId;
         this.roundId = roundId;
-        this.playCards = playCards;
     }
 
     public GameId getGameId() { return gameId; }
@@ -31,6 +28,4 @@ public class WinnedCards extends DomainEvent {
     public PlayerId getPlayerId() { return playerId;   }
 
     public RoundId getRoundId() { return roundId; }
-
-    public Set<PlayCard> getCards() { return playCards; }
 }

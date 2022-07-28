@@ -9,6 +9,8 @@ import java.util.UUID;
 
 public class CreatedRound extends DomainEvent {
 
+    public static final String EVENT_TYPE = "game.CreatedRound";
+
     private final RoundId roundId;
 
     private final GameId gameId;
@@ -16,7 +18,7 @@ public class CreatedRound extends DomainEvent {
     private final RoundNumber roundNumber;
 
     public CreatedRound(RoundId roundId, GameId gameId, RoundNumber roundNumber) {
-        super("CreatedRound");
+        super(EVENT_TYPE);
         this.roundId = roundId;
         this.gameId = gameId;
         this.roundNumber = roundNumber;

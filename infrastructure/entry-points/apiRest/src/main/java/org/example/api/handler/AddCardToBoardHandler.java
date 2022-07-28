@@ -1,6 +1,5 @@
 package org.example.api.handler;
 
-import org.example.model.GameContext.command.DealCardCommand;
 import org.example.model.generic.EventBus;
 import org.example.model.generic.EventStoreRepository;
 import org.example.model.generic.StoredEvent;

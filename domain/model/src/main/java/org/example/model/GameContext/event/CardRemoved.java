@@ -1,6 +1,7 @@
 package org.example.model.GameContext.event;
 
 import org.example.model.GameContext.card.values.CardId;
+import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.round.values.RoundId;
 import org.example.model.generic.DomainEvent;
 import org.example.model.GameContext.player.values.PlayerId;
@@ -9,23 +10,33 @@ import java.util.Set;
 
 public class CardRemoved extends DomainEvent {
 
+    public static final String EVENT_TYPE = "game.CardRemoved";
+    private final GameId gameId;
+    private final PlayerId winnerId;
+    private final Set<PlayerId> loserId;
     private final RoundId roundId;
 
-    private final Set<PlayerId> losers;
-
-    private final Set<CardId> cardId;
-
-    public CardRemoved(PlayerId winner, Set<PlayerId> losers, Set<CardId> cardId) {
-        super("cardgame.CardRemoved");
-        this.winner = winner;
-        this.losers = losers;
-        this.cardId = cardId;
+    public CardRemoved(GameId gameId, PlayerId winnerId, Set<PlayerId> loserId, RoundId roundId) {
+        super(EVENT_TYPE);
+        this.gameId = gameId;
+        this.winnerId = winnerId;
+        this.loserId = loserId;
+        this.roundId = roundId;
     }
 
-    public PlayerId getWinner() { return winner; }
+    public GameId getGameId() {
+        return gameId;
+    }
 
+    public PlayerId getWinnerId() {
+        return winnerId;
+    }
 
-    public Set<PlayerId> getLosers() { return losers; }
+    public Set<PlayerId> getLoserId() {
+        return loserId;
+    }
 
-    public CardId getCard() { return cardId; }
+    public RoundId getRoundId() {
+        return roundId;
+    }
 }

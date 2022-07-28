@@ -2,6 +2,7 @@ package org.example.usecase.game;
 
 import org.example.model.CardContext.card.gateway.CardRepository;
 import org.example.model.GameContext.card.PlayCard;
+import org.example.model.GameContext.card.values.CardId;
 import org.example.model.GameContext.command.AddCardToBoardCommand;
 import org.example.model.GameContext.game.Game;
 import org.example.model.GameContext.game.values.GameId;
@@ -32,7 +33,7 @@ public class AddCardToBoardUseCase implements Function<AddCardToBoardCommand, Fl
                     var card = objects.getT2();
                     var game = Game.from(GameId.of(command.getGameId().toString()), events);
 
-                    game.addCardToBoard(PlayerId.of(command.getPlayerId().toString()), new PlayCard(card, Boolean.TRUE));
+                    game.addCardToBoard(PlayerId.of(command.getPlayerId().toString()), new PlayCard(CardId.of(card.getId()), card));
                     return game.getUncommittedChanges();
                 });
     }

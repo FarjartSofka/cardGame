@@ -1,23 +1,26 @@
 package org.example.model.GameContext.event;
 
+import org.example.model.GameContext.player.values.Nickname;
 import org.example.model.generic.DomainEvent;
 import org.example.model.GameContext.player.values.PlayerId;
 
 public class AddedPlayer extends DomainEvent {
-    private final PlayerId identity;
-    private final String userId;
 
-    public AddedPlayer(PlayerId identity, String userId) {
-        super("cardgame.AddedPlayer");
+    public static final String EVENT_TYPE = "cardgame.AddedPlayer";
+    private final PlayerId identity;
+    private final Nickname nickname;
+
+    public AddedPlayer(PlayerId identity, Nickname nickname) {
+        super(EVENT_TYPE);
         this.identity = identity;
-        this.userId = userId;
+        this.nickname = nickname;
     }
 
     public PlayerId getIdentity() {
         return identity;
     }
 
-    public String getUserId() {
-        return userId;
+    public Nickname getNickname() {
+        return nickname;
     }
 }

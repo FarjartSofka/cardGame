@@ -6,12 +6,14 @@ import org.example.model.generic.DomainEvent;
 
 public class GameFinished extends DomainEvent {
 
+    public static final String EVENT_TYPE = "game.GameFinished";
+
     private final GameId gameId;
 
     private final Player player;
 
     public GameFinished(GameId gameId, Player player) {
-        super("cardgame.GameFinished");
+        super(EVENT_TYPE);
         this.gameId = gameId;
         this.player = player;
     }
