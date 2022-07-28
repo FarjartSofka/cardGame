@@ -16,5 +16,7 @@ public interface CardRepository {
 
     Flux<Card> saveAll(Flux<Card> cards);
 
+    Mono<Card> findByExp(Long exp);
+
 }
 

@@ -6,6 +6,7 @@ import org.example.model.CardContext.card.gateway.CardRepository;
 import org.reactivecommons.utils.ObjectMapperI;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Repository
 public class MongoCardRepositoryAdapter extends OperationAdapter<Card, CardDocument, String, CardDBRepository> implements CardRepository {
@@ -19,4 +20,10 @@ public class MongoCardRepositoryAdapter extends OperationAdapter<Card, CardDocum
         var entities =  entity.map(this::mapToDocument);
         return  repository.saveAll(entities).map(this::mapToEntity);
     }
+
+    @Override
+    public Mono<Card> findByExp(Long exp){
+       return repository.findByExp(exp).map(this::mapToEntity);
+    }
+
 }

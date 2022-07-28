@@ -1,5 +1,6 @@
 package org.example.model.GameContext.game;
 
+import org.example.model.GameContext.card.values.CardId;
 import org.example.model.GameContext.game.values.GameState;
 import org.example.model.generic.EventChange;
 import org.example.model.GameContext.deck.Deck;
@@ -14,6 +15,7 @@ import org.example.model.GameContext.player.values.Nickname;
 import org.example.model.GameContext.player.values.PlayerId;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class GameEventChange extends EventChange {
@@ -23,8 +25,11 @@ public class GameEventChange extends EventChange {
 
         apply((CreatedGame event)-> {
             game.players = new HashSet<>();
-            game.round = new HashSet<>();
             game.state = new GameState(GameState.States.CREATED);
+        });
+
+        apply((StartedGame event)-> {
+            game.state = new GameState(GameState.States.IN_GAME);
         });
 
         apply((CreatedPlayer event)->{
@@ -44,17 +49,21 @@ public class GameEventChange extends EventChange {
                     .orElseThrow();
         });
 
-        apply((AddedCardtoPlayer event)->{
-            var player = game.getPlayer(event.getPlayerId());
-            event.getCardsOnDeck()
-                    .cards()
-                    .stream()
-                    .forEach(card -> player.get().addCardtoPlayer(card));
+        apply((DistributedCards event) -> {
+            game.players.stream()
+                    .filter(player ->
+                            Objects.equals(player.identity(), event.getPlayerId()))
+                    .findFirst()
+                    .ifPresent(player ->
+                            event.getGameCards().forEach(player::addCardtoPlayer)
+                    );
         });
 
         apply((CardRemoved event)->{
-            var player = game.getPlayer(event.getPlayerId());
-            player.get().removeCardtoPlayer(event.getCard());
+            var player = game.getPlayers()
+                    .stream()
+                    ;
+
         });
 
 

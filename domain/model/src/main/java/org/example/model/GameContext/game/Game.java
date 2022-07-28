@@ -1,19 +1,20 @@
 package org.example.model.GameContext.game;
 
+import org.example.model.GameContext.card.PlayCard;
 import org.example.model.GameContext.game.values.GameState;
+import org.example.model.GameContext.round.Round;
 import org.example.model.generic.AggregateEvent;
 import org.example.model.GameContext.board.Board;
 import org.example.model.GameContext.board.values.BoardId;
-import org.example.model.GameContext.card.Card;
 import org.example.model.GameContext.card.CardFactory;
 import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.event.*;
 import org.example.model.GameContext.game.values.GameId;
-import org.example.model.GameContext.game.values.Round;
 import org.example.model.GameContext.player.Player;
 import org.example.model.GameContext.player.values.Nickname;
 
 import org.example.model.GameContext.player.values.PlayerId;
+import org.example.model.generic.DomainEvent;
 
 import java.util.*;
 
@@ -46,19 +47,18 @@ public class Game extends AggregateEvent<GameId> {
         appendChange( new CreatedGame()).apply();
     }
 
-    public static Game from(GameId gameId) {
-        return new Game(gameId);
+    public static Game from(GameId gameId, List<DomainEvent> events) {
+        var game = new Game(gameId);
+        events.forEach(game::applyEvent);
+        return game;
     }
 
-    public void startGame(GameId gameId,Map<PlayerId, Set<Card>> deck) {
-        deck
-                .forEach((playerId, deckSet) ->
-                        appendChange(new DistributedCards(gameId, playerId, deckSet)).apply()
-                );
+    public void startGame(GameId gameId) {
+        appendChange(new StartedGame(gameId)).apply();
     }
 
     public void addCardToBoard(PlayerId playerId, CardFactory cards) {
-        appendChange(new AddedCardtoPlayer(playerId, cards)).apply();
+        appendChange(new AddedCardtoBoard(playerId, cards, round.)).apply();
     }
 
     public void addPlayer(PlayerId playerId, Nickname nickname){
@@ -77,5 +77,7 @@ public class Game extends AggregateEvent<GameId> {
 
     public Set<Player> getPlayers() { return players; }
 
+    public GameState getState() { return state; }
 
+    public Round round() {}
 }

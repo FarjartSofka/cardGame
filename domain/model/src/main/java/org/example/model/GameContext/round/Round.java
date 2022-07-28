@@ -1,25 +1,27 @@
 package org.example.model.GameContext.round;
 
+import org.example.model.CardContext.card.Card;
 import org.example.model.generic.Entity;
 import org.example.model.GameContext.player.values.PlayerId;
 import org.example.model.GameContext.round.values.RoundId;
 import org.example.model.GameContext.round.values.RoundNumber;
 
+import java.util.Map;
 import java.util.Set;
 
 public class Round extends Entity<RoundId> {
 
-    private Set<PlayerId> players;
+    private final Map<PlayerId, Card> mapped;
 
     private RoundNumber number;
 
-    public Round(RoundId entityId, Set<PlayerId> players, RoundNumber number) {
+    public Round(RoundId entityId, Map<PlayerId, Card> mapped, RoundNumber number) {
         super(entityId);
-        this.players = players;
+        this.mapped = mapped;
         this.number = number;
     }
 
-    public Set<PlayerId> players() { return players; }
+    public Map<PlayerId, Card> getMapped() { return mapped; }
 
     public RoundNumber number() { return number; }
 }

@@ -1,7 +1,7 @@
 package org.example.model.GameContext.event;
 
 import org.example.model.generic.DomainEvent;
-import org.example.model.GameContext.card.Card;
+import org.example.model.GameContext.card.PlayCard;
 import org.example.model.GameContext.game.values.GameId;
 import org.example.model.GameContext.player.values.PlayerId;
 
@@ -13,9 +13,13 @@ public class DistributedCards extends DomainEvent {
     private final GameId gameId;
     private final PlayerId playerId;
 
-    private final Set<Card> deck;
+    private final Set<PlayCard> deck;
 
-    public DistributedCards(GameId gameId, PlayerId playerId, Set<Card> deck) {
+    public Set<PlayCard> getDeck() {
+        return deck;
+    }
+
+    public DistributedCards(GameId gameId, PlayerId playerId, Set<PlayCard> deck) {
         super(EVENT_TYPE);
         this.gameId = gameId;
         this.playerId = playerId;
@@ -26,7 +30,7 @@ public class DistributedCards extends DomainEvent {
         return playerId;
     }
 
-    public Set<Card> getGameCards() {
-        return deck;
-    }
+    public Set<PlayCard> getGameCards() { return deck; }
+
+    public GameId getGameId() { return gameId; }
 }

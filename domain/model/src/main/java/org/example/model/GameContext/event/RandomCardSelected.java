@@ -1,17 +1,17 @@
 package org.example.model.GameContext.event;
 
 import org.example.model.generic.DomainEvent;
-import org.example.model.GameContext.card.Card;
+import org.example.model.GameContext.card.PlayCard;
 
 
 public class RandomCardSelected extends DomainEvent {
 
-    private final Card cardId;
+    private final PlayCard playCardId;
 
-    public RandomCardSelected(Card cardId) {
+    public RandomCardSelected(PlayCard playCardId) {
         super("cardgame.RandomCardSelected");
-        this.cardId = cardId;
+        this.playCardId = playCardId;
     }
 
-    public Card cardId() { return cardId; }
+    public PlayCard cardId() { return playCardId; }
 }
