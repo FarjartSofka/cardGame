@@ -34,7 +34,7 @@ public abstract class DomainEvent implements Serializable {
      * @param aggregateParentId the aggregate parent id
      * @param uuid              the uuid
      */
-    public DomainEvent(final String type, String aggregateRootId, String aggregateParentId, UUID uuid) {
+    protected DomainEvent(final String type, String aggregateRootId, String aggregateParentId, UUID uuid) {
         this.type = type;
         this.aggregateRootId = aggregateRootId;
         this.aggregateParentId = aggregateParentId;

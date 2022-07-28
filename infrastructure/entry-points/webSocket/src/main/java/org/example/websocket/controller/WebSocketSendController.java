@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@ServerEndpoint("/events/{correlationId}")
+@ServerEndpoint("/retrieve/{correlationId}")
 public class WebSocketSendController implements SocketSendMessage {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketSendController.class.getName());
     private static Map<String, Map<String, Session>> sessions;
@@ -53,9 +53,7 @@ public class WebSocketSendController implements SocketSendMessage {
     public void send(String correlationId, String event) {
         if (Objects.nonNull(correlationId) && sessions.containsKey(correlationId)) {
             sessions.get(correlationId).values()
-                    .forEach(session -> {
-                        session.sendText(event);
-                    });
+                    .forEach(session -> session.sendText(event));
         }
     }
 }

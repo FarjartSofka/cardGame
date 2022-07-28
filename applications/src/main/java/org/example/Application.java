@@ -15,8 +15,6 @@ import java.util.concurrent.TimeoutException;
 @SpringBootApplication
 public class Application {
 
-    private final static String QUEUE_NAME = "hello";
-
     public static void main(String[] args){
         SpringApplication.run(Application.class, args);
     }

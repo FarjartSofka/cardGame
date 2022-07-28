@@ -18,7 +18,7 @@ public abstract class Entity<I extends Identity> {
      *
      * @param entityId the entity id
      */
-    public Entity(I entityId) {
+    protected Entity(I entityId) {
         this.entityId = Objects.requireNonNull(entityId, "The identity cannot be a value null");
     }
 

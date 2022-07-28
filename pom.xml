@@ -12,9 +12,9 @@
         <module>applications</module>
         <module>domain/model</module>
         <module>domain/usecase</module>
-        <module>infrastructure/entry-points/apiRest</module>
         <module>infrastructure/driven-adapters/mongo-repository</module>
         <module>infrastructure/driven-adapters/event-bus</module>
+        <module>infrastructure/entry-points/apiRest</module>
         <module>infrastructure/entry-points/webSocket</module>
     </modules>
     <properties>

@@ -1,7 +1,7 @@
 package org.example.model.GameContext.game;
 
+import org.example.model.GameContext.game.values.GameState;
 import org.example.model.generic.AggregateEvent;
-import org.example.model.generic.DomainEvent;
 import org.example.model.GameContext.board.Board;
 import org.example.model.GameContext.board.values.BoardId;
 import org.example.model.GameContext.card.Card;
@@ -29,6 +29,8 @@ public class Game extends AggregateEvent<GameId> {
 
     protected Player winner;
 
+    protected GameState state;
+
     public Game(GameId gameId, Set<Player> player){
         super(gameId);
         subscribe( new GameEventChange(this));
@@ -38,11 +40,6 @@ public class Game extends AggregateEvent<GameId> {
         appendChange(new CreatedBoard(new BoardId())).apply();
     }
 
-
-
-
-
-
     public Game(GameId entityId) {
         super(entityId);
         subscribe(new GameEventChange(this));
@@ -50,9 +47,7 @@ public class Game extends AggregateEvent<GameId> {
     }
 
     public static Game from(GameId gameId) {
-        var game = new Game(gameId);
-
-        return game;
+        return new Game(gameId);
     }
 
     public void startGame(GameId gameId,Map<PlayerId, Set<Card>> deck) {
@@ -81,4 +76,6 @@ public class Game extends AggregateEvent<GameId> {
     public Deck getDeck() { return deck; }
 
     public Set<Player> getPlayers() { return players; }
+
+
 }

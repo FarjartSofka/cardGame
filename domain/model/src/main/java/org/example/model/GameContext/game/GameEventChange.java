@@ -1,5 +1,6 @@
 package org.example.model.GameContext.game;
 
+import org.example.model.GameContext.game.values.GameState;
 import org.example.model.generic.EventChange;
 import org.example.model.GameContext.deck.Deck;
 import org.example.model.GameContext.deck.values.DeckId;
@@ -23,6 +24,7 @@ public class GameEventChange extends EventChange {
         apply((CreatedGame event)-> {
             game.players = new HashSet<>();
             game.round = new HashSet<>();
+            game.state = new GameState(GameState.States.CREATED);
         });
 
         apply((CreatedPlayer event)->{
