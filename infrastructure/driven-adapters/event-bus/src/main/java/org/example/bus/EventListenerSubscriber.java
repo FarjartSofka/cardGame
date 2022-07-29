@@ -37,12 +37,12 @@ public class EventListenerSubscriber {
         DomainEvent event = Objects.requireNonNull(domainEvent);
         logger.info("Llego este evento: " + event);
         this.useCases.stream().filter((useCaseWrap) -> useCaseWrap.getEventType().equals(domainEvent.type)).forEach((useCaseWrap) -> {
-           var events = (List<DomainEvent>) useCaseWrap.executeUseCase(domainEvent).collectList();
+           var events = (List<DomainEvent>) useCaseWrap.executeUseCase(domainEvent).collectList().block();
            events.forEach(domainEvnt-> {
-               repository.saveEvent(event.getAggregateName(),
+               repository.saveEvent(domainEvnt.getAggregateName(),
                        event.aggregateRootId(),
-                       StoredEvent.wrapEvent(event, eventSerializer)).mergeWith(
-                       eventBus.publish(event));
+                       StoredEvent.wrapEvent(domainEvnt, eventSerializer)).mergeWith(
+                       eventBus.publish(domainEvnt)).then().block();
            });
         });
     }
