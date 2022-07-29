@@ -55,8 +55,8 @@ public class Game extends AggregateEvent<GameId> {
         return game;
     }
 
-    public void startGame(GameId gameId) {
-        appendChange(new StartedGame(gameId.toString())).apply();
+    public void startGame() {
+        appendChange(new StartedGame(this.entityId)).apply();
     }
 
     public void finishGame(Player winner) {
@@ -69,7 +69,8 @@ public class Game extends AggregateEvent<GameId> {
     public void distributeCards(CardFactory cardsFactory) {
         cardsFactory.cardsByPlayer()
                 .forEach((playerId, gameCards) ->
-                        appendChange(new DistributedCards(this.entityId, playerId, gameCards)).apply()
+                        //appendChange(new DistributedCards(this.entityId, playerId, gameCards)).apply()
+                        appendChange(new DistributedCards(playerId, gameCards)).apply()
                 );
     }
 

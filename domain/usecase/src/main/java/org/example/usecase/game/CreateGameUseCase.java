@@ -17,6 +17,9 @@ public class CreateGameUseCase implements Function<CreateGameCommand, Flux<Domai
                 GameId.of(createGameCommand.getGameId())
         );
         createGameCommand.getPlayersId().forEach((k,v)-> game.addPlayer(PlayerId.of(k), new Nickname(v)));
+
+
+
         return Flux.fromIterable(game.getUncommittedChanges());
    }
 

@@ -7,15 +7,15 @@ public class StartedGame extends DomainEvent {
 
     public static final String EVENT_TYPE = "cardgame.StartedGame";
 
-    private final String gameId;
+    private final GameId gameId;
 
 
-    public StartedGame(String gameId) {
+    public StartedGame(GameId gameId) {
         super(EVENT_TYPE);
         this.gameId = gameId;
     }
 
-    public String getGameId() {
+    public GameId getGameId() {
         return gameId;
     }
 }

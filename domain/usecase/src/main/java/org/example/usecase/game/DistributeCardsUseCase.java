@@ -32,19 +32,19 @@ public class DistributeCardsUseCase implements Function<StartedGame, Flux<Domain
     public Flux<DomainEvent> apply(StartedGame event) {
         return this.cardRepository.findAll()
                 .collectList()
-                .zipWith(this.repository.getEventsBy("cardgame", event.getGameId()).collectList())
+                .zipWith(this.repository.getEventsBy("cardgame", event.getGameId().value()).collectList())
                 .flatMapMany(objects -> {
                     var cards = objects.getT1();
                     var events = objects.getT2();
-                    var game = Game.from(GameId.of(event.getGameId()), events);
+                    var game = Game.from(event.getGameId(), events);
                     return Flux.fromIterable(game.getPlayers())
                             .map(player -> CardFactory.getInstance().add(
                                             player.identity(),
                                             generateCards(cards)
                                     )
                             )
-                            .last()
-                            .map(factories -> {
+                            //|.last()
+                           .map(factories -> {
                                 game.distributeCards(factories);
                                 return game.getUncommittedChanges();
                             })

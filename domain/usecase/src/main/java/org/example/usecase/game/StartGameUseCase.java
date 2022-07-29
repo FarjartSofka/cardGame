@@ -25,7 +25,7 @@ public class StartGameUseCase implements Function<StartGameCommand, Flux<DomainE
                 .flatMapMany(events -> {
                     var game = Game.from(GameId.of(command.getGameId()), events);
                     if (!game.getState().equals(GameState.States.IN_GAME)) {
-                        game.startGame(GameId.of(command.getGameId())) ;
+                        game.startGame() ;
                     }
                     return Flux.fromIterable(game.getUncommittedChanges());
                 });
