@@ -5,9 +5,12 @@ import org.example.model.generic.Command;
 
 public class StartGameCommand extends Command {
 
-    private final GameId gameId;
+    private String gameId;
 
-    public StartGameCommand(GameId gameId) { this.gameId = gameId; }
+    public StartGameCommand(String gameId) { this.gameId = gameId; }
 
-    public GameId getGameId() { return gameId; }
+    public StartGameCommand() {
+    }
+
+    public String getGameId() { return gameId; }
 }

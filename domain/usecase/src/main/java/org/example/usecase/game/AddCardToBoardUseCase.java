@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 
 import java.util.function.Function;
 
-public class AddCardToBoardUseCase implements Function<AddCardToBoardCommand, Flux<DomainEvent> {
+public class AddCardToBoardUseCase implements Function<AddCardToBoardCommand, Flux<DomainEvent>> {
 
     private final EventStoreRepository eventStoreRepository;
 
@@ -26,7 +26,7 @@ public class AddCardToBoardUseCase implements Function<AddCardToBoardCommand, Fl
 
     @Override
     public Flux<DomainEvent> apply(AddCardToBoardCommand command) {
-        return this.eventStoreRepository.getEventsBy("game", command.getGameId().toString()).collectList()
+        return this.eventStoreRepository.getEventsBy("cardgame", command.getGameId().toString()).collectList()
                 .zipWith(this.cardRepository.findById(command.getCardId().toString()))
                 .flatMapIterable((objects) -> {
                     var events = objects.getT1();

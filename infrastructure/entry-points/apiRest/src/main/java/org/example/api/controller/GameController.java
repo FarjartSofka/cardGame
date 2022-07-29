@@ -18,6 +18,8 @@ public class GameController {
 
     @Bean
     public RouterFunction<ServerResponse> routerGameFunction(GameHandler handler) {
-        return RouterFunctions.nest(path("game"),route(POST("/create"), handler::save)) ;
+        return RouterFunctions.nest(path("game"),route(POST("/create"), handler::save)
+                .andRoute(POST("/start"), handler::start));
+                //.andRoute(POST("/"), handler::saveAll));
     }
 }

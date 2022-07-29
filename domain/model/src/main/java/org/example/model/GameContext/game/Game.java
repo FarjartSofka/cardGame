@@ -56,17 +56,20 @@ public class Game extends AggregateEvent<GameId> {
     }
 
     public void startGame(GameId gameId) {
-        appendChange(new StartedGame(gameId)).apply();
+        appendChange(new StartedGame(gameId.toString())).apply();
     }
 
     public void finishGame(Player winner) {
         appendChange(new GameFinished(this.entityId, winner)).apply();
     }
 
+    public void addPlayer(PlayerId playerId, Nickname nickname){
+        appendChange(new CreatedPlayer(playerId.value(), nickname.value() )).apply();
+    }
     public void distributeCards(CardFactory cardsFactory) {
         cardsFactory.cardsByPlayer()
                 .forEach((playerId, gameCards) ->
-                        appendChange(new DistributedCards(playerId, gameCards, round())).apply()
+                        appendChange(new DistributedCards(this.entityId, playerId, gameCards)).apply()
                 );
     }
 

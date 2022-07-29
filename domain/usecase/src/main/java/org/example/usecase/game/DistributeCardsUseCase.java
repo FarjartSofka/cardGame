@@ -5,8 +5,10 @@ import org.example.model.CardContext.card.gateway.CardRepository;
 import org.example.model.GameContext.card.PlayCard;
 import org.example.model.GameContext.card.CardFactory;
 import org.example.model.GameContext.card.values.CardId;
-import org.example.model.GameContext.event.DistributedCards;
+import org.example.model.GameContext.command.AddCardToBoardCommand;
+import org.example.model.GameContext.event.StartedGame;
 import org.example.model.GameContext.game.Game;
+import org.example.model.GameContext.game.values.GameId;
 import org.example.model.generic.DomainEvent;
 import org.example.model.generic.EventStoreRepository;
 import reactor.core.publisher.Flux;
@@ -17,7 +19,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class DistributeCardsUseCase implements Function<DistributedCards, Flux<DomainEvent>> {
+public class DistributeCardsUseCase implements Function<StartedGame, Flux<DomainEvent>> {
     private final EventStoreRepository repository;
     private final CardRepository cardRepository;
 
@@ -27,14 +29,14 @@ public class DistributeCardsUseCase implements Function<DistributedCards, Flux<D
     }
 
     @Override
-    public Flux<DomainEvent> apply(DistributedCards event) {
+    public Flux<DomainEvent> apply(StartedGame event) {
         return this.cardRepository.findAll()
                 .collectList()
-                .zipWith(this.repository.getEventsBy("game", event.getGameId().value()).collectList())
+                .zipWith(this.repository.getEventsBy("cardgame", event.getGameId()).collectList())
                 .flatMapMany(objects -> {
                     var cards = objects.getT1();
                     var events = objects.getT2();
-                    var game = Game.from(event.getGameId(), events);
+                    var game = Game.from(GameId.of(event.getGameId()), events);
                     return Flux.fromIterable(game.getPlayers())
                             .map(player -> CardFactory.getInstance().add(
                                             player.identity(),

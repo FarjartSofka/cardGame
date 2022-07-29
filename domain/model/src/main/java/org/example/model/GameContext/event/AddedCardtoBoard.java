@@ -8,7 +8,7 @@ import org.example.model.generic.DomainEvent;
 
 public class AddedCardtoBoard extends DomainEvent {
 
-    public static final String EVENT_TYPE = "cardGame.AddedCardtoBoard";
+    public static final String EVENT_TYPE = "cardgame.AddedCardtoBoard";
 
     private final PlayerId playerId;
 

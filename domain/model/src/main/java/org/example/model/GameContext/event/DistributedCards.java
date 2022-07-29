@@ -12,9 +12,9 @@ public class DistributedCards extends DomainEvent {
 
     private final GameId gameId;
     private final PlayerId playerId;
-    private final PlayCard deck;
+    private final Set<PlayCard> deck;
 
-    public DistributedCards(GameId gameId, PlayerId playerId, PlayCard deck) {
+    public DistributedCards(GameId gameId, PlayerId playerId, Set<PlayCard> deck) {
         super(EVENT_TYPE);
         this.gameId = gameId;
         this.playerId = playerId;
@@ -25,7 +25,7 @@ public class DistributedCards extends DomainEvent {
         return playerId;
     }
 
-    public PlayCard getGameCards() { return deck; }
+    public Set<PlayCard> getGameCards() { return deck; }
 
     public GameId getGameId() { return gameId; }
 
